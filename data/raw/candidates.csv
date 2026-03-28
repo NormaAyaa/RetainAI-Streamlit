@@ -1,0 +1,9 @@
+candidate_id,full_name,email,position_applied,years_experience,skills,salary_expectation,last_tenure_years,num_companies_worked,reason_leaving
+CND001,Aldi Rahmawan,aldi@gmail.com,Senior Developer,5,"Python,React,Node.js,PostgreSQL,Docker",11000000,4.0,2,Better opportunity
+CND002,Farah Nuraini,farah@gmail.com,Senior Developer,4,"Python,FastAPI,AWS,Kubernetes,PostgreSQL",12500000,2.5,3,Career growth
+CND003,Dimas Kurniawan,dimask@gmail.com,Senior Developer,3,"Vue.js,Laravel,MySQL,Redis",8500000,1.5,4,Salary
+CND004,Reza Firmansyah,reza@gmail.com,Senior Developer,6,"React,Node.js,AWS,MongoDB",13500000,5.0,2,Relocation
+CND005,Putri Handayani,putri@gmail.com,Senior Developer,4,"React,TypeScript,Node.js,PostgreSQL",10500000,3.5,2,Better work culture
+CND006,Yoga Pratama,yoga@gmail.com,Senior Developer,3,"Angular,Java,Spring Boot,MySQL",9000000,2.0,3,Work life balance
+CND007,Intan Rahayu,intan@gmail.com,Senior Developer,5,"Python,Django,PostgreSQL,Redis,Docker",11500000,4.5,2,Better opportunity
+CND008,Surya Wibowo,surya@gmail.com,Senior Developer,2,"React,Node.js,MongoDB",7500000,1.0,3,Salary

@@ -1,0 +1,16 @@
+perf_id,employee_id,period,score,rating,months_since_last_promotion,has_promotion_plan
+PRF001,EMP001,2023-H2,3.8,Good,26,False
+PRF002,EMP002,2023-H2,4.2,Excellent,12,True
+PRF003,EMP003,2023-H2,3.2,Average,21,False
+PRF004,EMP004,2023-H2,4.0,Excellent,18,True
+PRF005,EMP005,2023-H2,4.5,Outstanding,6,True
+PRF006,EMP006,2023-H2,3.5,Good,30,False
+PRF007,EMP007,2023-H2,3.8,Good,12,True
+PRF008,EMP008,2023-H2,4.2,Excellent,10,True
+PRF009,EMP009,2023-H2,4.5,Outstanding,8,True
+PRF010,EMP010,2023-H2,3.5,Good,0,False
+PRF011,EMP011,2023-H2,3.2,Average,22,False
+PRF012,EMP012,2023-H2,4.0,Excellent,15,True
+PRF013,EMP013,2023-H2,4.0,Excellent,14,True
+PRF014,EMP014,2023-H2,4.5,Outstanding,5,True
+PRF015,EMP015,2023-H2,2.8,Below Average,18,False

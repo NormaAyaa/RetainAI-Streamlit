@@ -1,0 +1,16 @@
+employee_id,full_name,email,department,position,hire_date,employment_status,age,gender,education_level,marital_status,distance_from_home_km,num_companies_worked
+EMP001,Rizky Ananda,rizky@company.com,Engineering,Senior Developer,2022-01-15,active,29,Male,S1,Single,12,2
+EMP002,Sinta Maharani,sinta@company.com,Marketing,Marketing Lead,2020-07-01,active,34,Female,S2,Married,5,3
+EMP003,Budi Santoso,budi@company.com,Business Intelligence,Data Analyst,2022-06-10,active,27,Male,S1,Single,25,1
+EMP004,Dewi Puspita,dewi@company.com,Product,UX Designer,2019-11-20,active,31,Female,S1,Married,8,4
+EMP005,Agus Wahyudi,agus@company.com,Finance,Finance Analyst,2018-03-05,active,38,Male,S2,Married,3,1
+EMP006,Rina Kusuma,rina@company.com,Engineering,Backend Developer,2021-09-01,active,26,Female,S1,Single,18,2
+EMP007,Dimas Pratama,dimas@company.com,Engineering,DevOps Engineer,2020-04-15,active,30,Male,S1,Single,30,3
+EMP008,Lestari Wulandari,lestari@company.com,HR,HR Specialist,2019-08-20,active,33,Female,S1,Married,7,2
+EMP009,Hendra Gunawan,hendra@company.com,Sales,Sales Manager,2017-12-01,active,40,Male,S2,Married,15,5
+EMP010,Nadia Permata,nadia@company.com,Engineering,Frontend Developer,2023-02-01,active,24,Female,S1,Single,10,1
+EMP011,Fajar Nugroho,fajar@company.com,Marketing,Content Strategist,2021-05-10,active,28,Male,S1,Single,22,2
+EMP012,Yuliana Sari,yuliana@company.com,Finance,Tax Analyst,2020-01-15,active,32,Female,S1,Married,6,3
+EMP013,Anton Wijaya,anton@company.com,Engineering,Senior Developer,2021-11-01,active,31,Male,S2,Married,14,2
+EMP014,Mega Putri,mega@company.com,Product,Product Manager,2018-06-01,active,36,Female,S2,Married,9,3
+EMP015,Bagas Setiawan,bagas@company.com,Business Intelligence,BI Developer,2022-09-01,active,25,Male,S1,Single,35,1
