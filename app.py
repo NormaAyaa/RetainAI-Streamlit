@@ -781,24 +781,9 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
-# ─── Auto load data on first run ────────────────────────────────
-if st.session_state["df_master"] is None:
-    loaded = load_default_data()
-    if loaded and st.session_state["model"] is None:
-        # Try loading saved model
-        mp = MODELS / "resign_model.pkl"
-        if mp.exists():
-            with open(mp,"rb") as f:
-                saved = pickle.load(f)
-            st.session_state["model"]      = saved["model"]
-            st.session_state["features"]   = saved["features"]
-            st.session_state["metrics"]    = saved.get("metrics",{})
-            st.session_state["trained_at"] = saved.get("trained_at","")
-        else:
-            df = st.session_state["df_master"]
-            if df is not None:
-                with st.spinner("🔄 Training model..."):
-                    train_model(df)
+# ─── Auto load data DINONAKTIFKAN ────────────────────────────────
+# Data hanya dimuat saat user secara eksplisit mengupload file
+# melalui halaman "Upload Data". Tidak ada auto-load saat pertama buka.
 
 
 # ─── Helper: page footer credit ─────────────────────────────────
@@ -829,7 +814,7 @@ if page == "🏠 Dashboard":
     cand = st.session_state["df_candidates"]
 
     if df is None:
-        st.info("📂 Belum ada data. Silakan upload data melalui menu **Upload Data** atau letakkan CSV di folder `data/raw/`.")
+        st.info("📂 Belum ada data. Silakan pergi ke menu **📂 Upload Data** untuk upload file CSV dan melatih model.")
         st.stop()
 
     results = predict_all(df) if st.session_state["model"] else []
@@ -1440,6 +1425,42 @@ elif page == "📂 Upload Data":
     st.markdown("<h2 style='font-family:Syne,sans-serif;color:#e6edf3;margin-bottom:8px;'>📂 Upload Semua Dataset</h2>", unsafe_allow_html=True)
     st.markdown("<div class='info-box'>💡 Upload semua dataset sekaligus, lalu klik <b>Proses & Training</b> — model akan ditraining dari gabungan seluruh data yang tersedia. Minimal <b>employee.csv</b> diperlukan.</div>", unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
+
+    # ── Load data default dari data/raw/ (eksplisit, bukan otomatis) ──
+    default_exists = (DATA / "employee.csv").exists()
+    if default_exists and st.session_state["df_master"] is None:
+        st.markdown("""
+            <div style='background:rgba(61,110,255,.08);border:1px solid rgba(61,110,255,.25);
+                        border-radius:12px;padding:16px 20px;margin-bottom:20px;'>
+                <div style='font-family:Syne,sans-serif;font-size:14px;font-weight:700;color:#a5b4fc;margin-bottom:4px;'>
+                    📁 Data tersedia di folder <code style="font-size:12px;">data/raw/</code>
+                </div>
+                <div style='font-size:12px;color:#6e7681;'>
+                    Ditemukan data default. Klik tombol di bawah untuk memuat dan melatih model.
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+        if st.button("📂 Muat Data Default & Training Model", type="primary", use_container_width=False):
+            with st.spinner("⏳ Memuat data default dan training model..."):
+                loaded = load_default_data()
+                if loaded:
+                    mp = MODELS / "resign_model.pkl"
+                    if mp.exists():
+                        with open(mp, "rb") as f:
+                            saved = pickle.load(f)
+                        st.session_state["model"]      = saved["model"]
+                        st.session_state["features"]   = saved["features"]
+                        st.session_state["metrics"]    = saved.get("metrics", {})
+                        st.session_state["trained_at"] = saved.get("trained_at", "")
+                    else:
+                        df_def = st.session_state["df_master"]
+                        if df_def is not None:
+                            train_model(df_def)
+                    st.success("✅ Data default berhasil dimuat!")
+                    st.rerun()
+                else:
+                    st.error("❌ Gagal memuat data default.")
+        st.markdown("<br>", unsafe_allow_html=True)
 
     # ── Status 6 file yang sudah ada ───────────────────────────
     st.markdown("<div class='section-title'>📋 Status Dataset Saat Ini</div>", unsafe_allow_html=True)
