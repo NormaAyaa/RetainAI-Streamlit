@@ -215,6 +215,43 @@ div[data-testid="metric-container"] {
     border-radius: 10px;
     padding: 12px 16px;
 }
+
+/* Credit sidebar footer */
+.credit-sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 244px;
+    padding: 10px 16px 14px;
+    border-top: 1px solid #21262d;
+    background: linear-gradient(180deg, transparent 0%, #0d1117 50%);
+    text-align: center;
+    z-index: 999;
+}
+.credit-sidebar-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #3d444d;
+    letter-spacing: 0.3px;
+    line-height: 1.8;
+}
+.credit-sidebar-name {
+    color: #00e5a0;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+}
+
+/* Credit page footer */
+.credit-page-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid #21262d;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #3d444d;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -733,6 +770,16 @@ with st.sidebar:
             </div>
         """, unsafe_allow_html=True)
 
+    # ── Credit by Princessaya ────────────────────────────────
+    st.markdown("""
+        <div class='credit-sidebar'>
+            <div class='credit-sidebar-text'>
+                crafted with <span style='color:#ff6b35;'>♡</span> by<br>
+                <span class='credit-sidebar-name'>PRINCESSAYA</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
 
 # ─── Auto load data on first run ────────────────────────────────
 if st.session_state["df_master"] is None:
@@ -752,6 +799,16 @@ if st.session_state["df_master"] is None:
             if df is not None:
                 with st.spinner("🔄 Training model..."):
                     train_model(df)
+
+
+# ─── Helper: page footer credit ─────────────────────────────────
+def render_credit():
+    st.markdown("""
+        <div class='credit-page-footer'>
+            RetainAI &nbsp;·&nbsp; crafted with <span style='color:#ff6b35;'>♡</span> by
+            <span style='color:#00e5a0;font-weight:600;letter-spacing:1px;'>Princessaya</span>
+        </div>
+    """, unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -885,6 +942,8 @@ if page == "🏠 Dashboard":
         df_top.columns = ["Nama","Departemen","Posisi","Risiko (%)","Level","Kepuasan","Overtime"]
         st.dataframe(df_top, use_container_width=True, hide_index=True)
 
+    render_credit()
+
 
 # ═══════════════════════════════════════════════════════════════
 # PAGE: RISIKO KARYAWAN
@@ -956,6 +1015,8 @@ elif page == "⚠️ Risiko Karyawan":
             xaxis=dict(gridcolor="#21262d"), yaxis=dict(gridcolor="#21262d"),
         )
         st.plotly_chart(fig, use_container_width=True)
+
+    render_credit()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1091,6 +1152,8 @@ elif page == "🔍 Analisis XAI":
         )
         st.plotly_chart(fig_g, use_container_width=True)
 
+    render_credit()
+
 
 # ═══════════════════════════════════════════════════════════════
 # PAGE: KANDIDAT MATCHING
@@ -1210,6 +1273,8 @@ elif page == "🎯 Kandidat Matching":
             xaxis=dict(gridcolor="#21262d"), yaxis=dict(gridcolor="#21262d"),
         )
         st.plotly_chart(fig, use_container_width=True)
+
+    render_credit()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1368,6 +1433,7 @@ elif page == "📂 Upload Data":
                 st.session_state["upload_success"] = None
                 st.rerun()
 
+        render_credit()
         st.stop()
 
     # ── Halaman upload normal ───────────────────────────────────
@@ -1567,6 +1633,8 @@ elif page == "📂 Upload Data":
             import time; time.sleep(0.5)
             st.rerun()
 
+    render_credit()
+
 
 # ═══════════════════════════════════════════════════════════════
 # PAGE: MODEL
@@ -1674,3 +1742,5 @@ elif page == "⚙️ Model":
                 st.plotly_chart(fig, use_container_width=True)
         except Exception as e:
             st.info(f"Feature importance tidak tersedia: {e}")
+
+    render_credit()
